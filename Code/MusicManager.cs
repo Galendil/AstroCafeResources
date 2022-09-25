@@ -22,6 +22,11 @@ public class MusicManager : MonoBehaviour
         return MusicTest.time * bps;
     }
 
+    public int GetCurrentBeat()
+    {
+        return (int)(MusicTest.time * bps);
+    }
+
     // Update is called once per frame
     void Update()
     {
