@@ -9,26 +9,33 @@ public class TassePrefab : MonoBehaviour
 {
     public Tasse model;
     public float aDeplacer = 0;
-    public float vitesse = (float)0.001;
+    public float vitesse = 0.1f;
 
+    
     public void Deplacer(float distance)
     {
         aDeplacer = distance;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void RemplirBulle()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(aDeplacer > 0)
+        if(aDeplacer >= vitesse)
         {
            transform.Translate(Vector3.right * vitesse);
            aDeplacer -= vitesse;
         }
     }
+
+    public void RecevoirIngrediant(int idIngrediant, int bonus)
+    {
+        model.RecevoirIngrediant(idIngrediant, bonus);
+        RemplirBulle();
+    }
+
 }

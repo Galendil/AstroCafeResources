@@ -2,6 +2,149 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+public class level
+{
+    static public int[,] LevelOne = new int[,]
+   {
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {2,1,0,0},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {2,1,0,0},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1},
+    {1,1,1,1}
+   };
+}
+
+
+
 public class Tasse
 {
     public static int idCounter = 0;
@@ -39,7 +182,7 @@ public class Tasse
 public class TasseManager : MonoBehaviour
 {
     public GameObject tassePrefab;
-
+    public MusicManager mMusicManager;
 
     public int NbIngrediants = 4;
     public int NbTassesTotal = 100;
@@ -50,6 +193,7 @@ public class TasseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mMusicManager = GameObject.FindObjectOfType<MusicManager>();
         tasses = new GameObject[NbIngrediants + 2];
         for(int i = 0; i < NbIngrediants + 2; i++)
         {
@@ -67,9 +211,9 @@ public class TasseManager : MonoBehaviour
         for (int i = 0; i < NbTassesAGenerer; i++)
         {
             toutesLesTasses[i] = new Tasse(NbIngrediants);
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
-                toutesLesTasses[i].recette[Random.Range(0,NbIngrediants)]++;
+                //toutesLesTasses[i].recette[j] += level.LevelOne[i + j][j];
             }
         }
     }
@@ -87,7 +231,7 @@ public class TasseManager : MonoBehaviour
         for (int i = NbIngrediants + 1; i > 0; i--)
         {
             tasses[i] = tasses[i - 1];
-            tasses[i-1].GetComponent<TassePrefab>().Deplacer((float) 3);
+            tasses[i-1].GetComponent<TassePrefab>().Deplacer((float) 3.45);
         }
     }
 
@@ -95,7 +239,7 @@ public class TasseManager : MonoBehaviour
     {
         if (tasses[idIngrediant].GetComponent<TassePrefab>().model.isActive)
         {
-            tasses[idIngrediant].GetComponent<TassePrefab>().model.RecevoirIngrediant(idIngrediant, bonus);
+            tasses[idIngrediant].GetComponent<TassePrefab>().RecevoirIngrediant(idIngrediant, bonus);
         }
     }
 
